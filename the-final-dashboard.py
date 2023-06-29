@@ -8,7 +8,7 @@ import dash_bootstrap_components as dbc
 
 ### DATEN AUFGABEN
 # Dateipfad
-url = "https://raw.githubusercontent.com/hon3ypi/DashboardDesignFS23/main/newDataset.csv"
+url = "./newDataset.csv"
 # Daten aus CSV-Datei laden
 datafile = pd.read_csv(url)
 # Daten für die ausgewählten Länder und Jahre filtern
@@ -24,7 +24,7 @@ hisfig = px.histogram(filtComb, x="Year", y="Value", color='GeoAreaName', barmod
 
 ### DATEN BEREINIGT
 # Bereinigter Datensatz
-data = pd.read_csv('https://raw.githubusercontent.com/monsieurmaussion/fhgr-dade/main/woman-leadership_bereinigt-neu.csv')
+data = pd.read_csv('./woman-leadership_bereinigt-neu.csv')
 # Datensatz nach Jahr sortiert für animation_frame
 data = data.sort_values(by="Year", ascending=True)
 
@@ -85,6 +85,8 @@ bafig.update_layout(
 
 # Web-App
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
+server = app.server
+
 # Layout
 app.layout = html.Div([
 
